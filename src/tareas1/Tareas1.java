@@ -44,17 +44,18 @@ public class Tareas1 extends Auto {
 
             case "1":
                 if (as[0].placas != null) {
-                    VerAutos(as);
+                    Auto a = new Auto();
+                    a.VerAutos(as);
                 } else {
                     System.out.println("no se han agregado carros");
                 }
                 break;
-                
+
             case "2":
                 if (as[0].placas != null) {
                     System.out.println("ingrese placa a eliminar");
                     String s = entrada.nextLine();
-                    eliminarAuto e=new eliminarAuto();
+                    Auto e = new Auto();
                     Auto ncarro[] = e.EliminarAuto(s, as);
                     menu(ncarro);
                 } else {
@@ -62,7 +63,8 @@ public class Tareas1 extends Auto {
                 }
                 break;
             case "3":
-                Matrices();
+                Auto M = new Auto();
+                M.Matrices();
                 break;
             case "4":
                 System.exit(0);
@@ -76,80 +78,4 @@ public class Tareas1 extends Auto {
         return carro;
     }
 
-    public static void VerAutos(Auto as[]) {
-        //for(objeto en conjunto)
-        for (Auto a : as) {
-            System.out.println("El modelo del carro es:" + a.Modelo + "\n");
-            System.out.println("Las placas son:" + a.placas + "\n");
-            System.out.println("El año del carro es:" + String.valueOf(a.Anio) + "\n");
-        }
-    }
-
-    public static Auto[] AgregarCarros(Auto as[]) {
-        Scanner entrada = new Scanner(System.in);
-        for (int i = 0; i < as.length; i++) {
-
-            Auto a = new Auto();
-            System.out.println("ingrese Año del carro");
-            String anio = entrada.nextLine();
-            a.Anio = Integer.parseInt(anio);
-
-            System.out.println("ingrese Modelo(nombre) del carro");
-            String Model = entrada.nextLine();
-            a.Modelo = Model;
-
-            System.out.println("ingrese Placas del carro");
-            String Placa = entrada.nextLine();
-            a.placas = Placa;
-
-            as[i] = a;
-            System.out.println("se ha agregado el auto\n");
-        }
-        return as;
-    }
-
-    private static Auto[] EliminarAuto(String placa, Auto carros[]) {
-        Auto ut[] = new Auto[carros.length - 1];
-
-        for (int i = 0; i < carros.length; i++) {
-            String valor = carros[i].placas;
-            if (i < ut.length) {
-                if (!valor.equals(placa)) {
-                    Auto nuevo = new Auto();
-                    nuevo.Anio = carros[i].Anio;
-                    nuevo.Modelo = carros[i].Modelo;
-                    nuevo.placas = carros[i].placas;
-                    ut[i] = nuevo;
-                }
-            } else {
-                if (!valor.equals(placa)) {
-                    Auto nuevo = new Auto();
-                    nuevo.Anio = carros[i].Anio;
-                    nuevo.Modelo = carros[i].Modelo;
-                    nuevo.placas = carros[i].placas;
-                    ut[i - 1] = nuevo;
-                }
-            }
-
-        }
-        return ut;
-    }
-    public static void Matrices(){
-        Random random = new Random();
-        int matR[][] = new int[3][3];
-        for (int i = 0; i < matR.length; i++) {
-            for (int j = 0; j < matR.length; j++) {
-                matR[i][j] = random.nextInt() + random.nextInt();
-                System.out.println("Columna: " + i + " Fila: " + j + "\n");
-                System.out.println("Valor: " + matR[i][j]);
-            }
-        }
-        System.out.println("==============================================");
-        for (int[] matR1 : matR) {
-            for (int j = 0; j < matR.length; j++) {
-                System.out.print(" " + matR1[j]);
-            }
-            System.out.println(" \n");
-        }
-    }
 }
