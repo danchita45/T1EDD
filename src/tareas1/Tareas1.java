@@ -8,6 +8,7 @@ package tareas1;
 import java.sql.Types;
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  *
@@ -35,6 +36,8 @@ public class Tareas1 extends Auto {
         System.out.println("seleccione una opcion\n");
         System.out.println("1: ver Autos\n");
         System.out.println("2: eliminar Autos\n");
+        System.out.println("3: hacer matriz\n");
+        System.out.println("4: salir\n");
         String opc = entrada.nextLine();
 
         switch (opc) {
@@ -57,7 +60,12 @@ public class Tareas1 extends Auto {
                     System.out.println("no se han agregado carros");
                 }
                 break;
-
+            case "3":
+                Matrices();
+                break;
+            case "4":
+                System.exit(0);
+                break;
             default:
                 System.out.println("La opcion no existe");
                 break;
@@ -123,6 +131,26 @@ public class Tareas1 extends Auto {
 
         }
         return ut;
+    }
+    
+    
+    public static void Matrices(){
+        Random random = new Random();
+        int matR[][] = new int[3][3];
+        for (int i = 0; i < matR.length; i++) {
+            for (int j = 0; j < matR.length; j++) {
+                matR[i][j] = random.nextInt() + random.nextInt();
+                System.out.println("Columna: " + i + " Fila: " + j + "\n");
+                System.out.println("Valor: " + matR[i][j]);
+            }
+        }
+        System.out.println("==============================================");
+        for (int i = 0; i < matR.length; i++) {
+            for (int j = 0; j < matR.length; j++) {
+                System.out.print(" "+matR[i][j]);
+            }
+            System.out.println(" \n");
+        }
     }
 
 }
