@@ -54,7 +54,8 @@ public class Tareas1 extends Auto {
                 if (as[0].placas != null) {
                     System.out.println("ingrese placa a eliminar");
                     String s = entrada.nextLine();
-                    Auto ncarro[] = EliminarAuto(s, as);
+                    eliminarAuto e=new eliminarAuto();
+                    Auto ncarro[] = e.EliminarAuto(s, as);
                     menu(ncarro);
                 } else {
                     System.out.println("no se han agregado carros");
@@ -76,6 +77,7 @@ public class Tareas1 extends Auto {
     }
 
     public static void VerAutos(Auto as[]) {
+        //for(objeto en conjunto)
         for (Auto a : as) {
             System.out.println("El modelo del carro es:" + a.Modelo + "\n");
             System.out.println("Las placas son:" + a.placas + "\n");
@@ -132,8 +134,6 @@ public class Tareas1 extends Auto {
         }
         return ut;
     }
-    
-    
     public static void Matrices(){
         Random random = new Random();
         int matR[][] = new int[3][3];
@@ -145,12 +145,11 @@ public class Tareas1 extends Auto {
             }
         }
         System.out.println("==============================================");
-        for (int i = 0; i < matR.length; i++) {
+        for (int[] matR1 : matR) {
             for (int j = 0; j < matR.length; j++) {
-                System.out.print(" "+matR[i][j]);
+                System.out.print(" " + matR1[j]);
             }
             System.out.println(" \n");
         }
     }
-
 }
